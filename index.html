@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>AngularJS with Custom Elements</title>
+  <!-- web-components support -->
+  <script src="web-components/polyfills/webcomponents-bundle.js"></script>
+  <script src="web-components/polyfills/custom-elements-es5-adapter.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+  <booking-list app-state='{ "passenger": { "name": "Max" } }'></booking-list>
+</div>
+
+<script src="main.js"></script>
+<script>
+    var ce = document.getElementsByTagName('booking-list')[0];
+    ce.addEventListener('message', function (e) {
+        console.debug('message', e);
+    });
+
+    location.hash = '/booking-list';
+</script>
+
+
+<!-- external web component -->
+<hr>
+<div contenteditable style="width: 200px; padding: 5px; border: 1px solid #cccccc">
+  one two three
+</div>
+<word-count for="[contenteditable]"></word-count>
+<script src="./web-components/word-counter.js"></script>
+<!-- /external web component -->
+
+</body>
+</html>
